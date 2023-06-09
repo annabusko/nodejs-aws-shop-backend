@@ -20,17 +20,6 @@
         }
       }
     },
-    "/products/productId" : {
-      "get" : {
-        "responses" : { },
-        "x-amazon-apigateway-integration" : {
-          "type" : "aws_proxy",
-          "httpMethod" : "POST",
-          "uri" : "arn:aws:apigateway:us-east-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-2:471176946492:function:NodejsAwsShopBackendStack-ProductServiceGetProduct-tpAyvDy8Z1Kj/invocations",
-          "passthroughBehavior" : "when_no_match"
-        }
-      }
-    },
     "/products/{productId}" : {
       "get" : {
         "parameters" : [ {

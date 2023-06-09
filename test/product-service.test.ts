@@ -9,7 +9,7 @@ describe("Lambda GetProductListHandler", () => {
     const event = {} as APIGatewayProxyEvent;
     const response = await getProductListHandler(event);
 
-    expect(response.statusCode).toBe(200);
+    expect(response.statusCode).toBe(HttpStatuses.Ok);
     expect(JSON.parse(response.body).length).toEqual(
       Database.getAllProducts().length
     );

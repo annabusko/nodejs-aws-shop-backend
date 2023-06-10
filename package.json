@@ -8,7 +8,8 @@
     "build": "tsc",
     "watch": "tsc -w",
     "test": "jest",
-    "cdk": "cdk"
+    "cdk": "cdk",
+    "db:write": "aws --region eu-north-1 dynamodb batch-write-item --request-items file://data.json"
   },
   "devDependencies": {
     "@types/jest": "^29.5.1",

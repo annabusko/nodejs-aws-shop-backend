@@ -1,25 +1,27 @@
 import { APIGatewayProxyEvent, APIGatewayProxyEventPathParameters } from "aws-lambda";
-import { getProductListHandler } from "../product-service/handlers/getProductListHandler";
 import { Database } from "../product-service/handlers/database";
 import { getProductByIdHandler } from "../product-service/handlers/getProductByIdHandler";
-import { HttpStatuses } from "../utility/response-builder";
+import { HttpStatuses } from "../utility/requestHandlerUtilities";
+import { createProductHandler } from "../product-service/handlers/createProductHandler";
+import { randomUUID } from "crypto";
+import { getListHandler } from "../product-service/handlers/getListHandler";
 
 describe("Lambda GetProductListHandler", () => {
   it("should return 'Ok'", async () => {
     const event = {} as APIGatewayProxyEvent;
-    const response = await getProductListHandler(event);
+    const response = await getListHandler(event);
 
     expect(response.statusCode).toBe(HttpStatuses.Ok);
     expect(JSON.parse(response.body).length).toEqual(
-      Database.getAllProducts().length
+      (await Database.getAllProducts())?.length
     );
   });
 });
 
-describe("Lambda GetProductByIdHandler", () => {
+describe("Product Service Basic", () => {
   it("should return proper Product object", async () => {
 
-    const assertionProduct = Database.getProductById("2");
+    const assertionProduct = await Database.getProductById("3367ec4b-b10c-48c5-9345-fc73c48a80a0");
 
     const event = { pathParameters: {productId: assertionProduct?.id} as APIGatewayProxyEventPathParameters} as APIGatewayProxyEvent;
     const response = await getProductByIdHandler(event);
@@ -44,6 +46,32 @@ describe("Lambda GetProductByIdHandler", () => {
 
     const event = {} as APIGatewayProxyEvent;
     const response = await getProductByIdHandler(event);
+
+    expect(response.statusCode).toBe(HttpStatuses.BadRequest);
+  });
+
+  it("should return 'Ok'", async () => {
+
+    const event = {body: JSON.stringify({
+      id: randomUUID(),
+      title: "Test Book",
+      description: 'Test',
+      price: 123
+    })} as APIGatewayProxyEvent;
+    const response = await createProductHandler(event);
+
+    expect(response.statusCode).toBe(HttpStatuses.Ok);
+  });
+
+  it("should return 'Bad Request'", async () => {
+
+    const event = {body: JSON.stringify({
+      id: 4654654,
+      title: 54654546,
+      description: 4654654,
+      price: "asdasdasd"
+    })} as APIGatewayProxyEvent;
+    const response = await createProductHandler(event);
 
     expect(response.statusCode).toBe(HttpStatuses.BadRequest);
   });

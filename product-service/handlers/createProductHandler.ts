@@ -28,8 +28,6 @@ export const createProductHandler = async (
       });
     }
 
-    console.log(JSON.stringify(product));
-
     await Database.createProduct(product);
 
     return BuildHttpJsonResponse(HttpStatuses.Ok, {

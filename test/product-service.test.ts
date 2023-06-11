@@ -21,28 +21,31 @@ describe("Lambda GetProductListHandler", () => {
 describe("Product Service Basic", () => {
   it("should return proper Product object", async () => {
 
-    const assertionProduct = await Database.getProductById("3367ec4b-b10c-48c5-9345-fc73c48a80a0");
+    const assertionProduct = await Database.getProductById("1167ec4b-b10c-48c5-9345-fc73c48a80a0");
+    console.log(assertionProduct);
 
     const event = { pathParameters: {productId: assertionProduct?.id} as APIGatewayProxyEventPathParameters} as APIGatewayProxyEvent;
     const response = await getProductByIdHandler(event);
     const product = JSON.parse(response.body);
+    console.log(assertionProduct);
     
     expect(response.statusCode).toBe(HttpStatuses.Ok);
     expect(product.id).toEqual(assertionProduct?.id);
     expect(product.description).toEqual(assertionProduct?.description);
     expect(product.price).toEqual(assertionProduct?.price);
     expect(product.title).toEqual(assertionProduct?.title);
+    expect(product.count).toEqual(assertionProduct?.count);
   });
 
-  it("should return 'NotFound'", async () => {
+  it("GET product by invalid id should return 'NotFound'", async () => {
 
-    const event = { pathParameters: {productId: "invalid_id"} as APIGatewayProxyEventPathParameters} as APIGatewayProxyEvent;
+    const event = { pathParameters: {productId: "63ac6ee7-3dd1-4d08-9b17-167862be3407"} as APIGatewayProxyEventPathParameters} as APIGatewayProxyEvent;
     const response = await getProductByIdHandler(event);
 
     expect(response.statusCode).toBe(HttpStatuses.NotFound);
   });
 
-  it("should return 'BadRequest'", async () => {
+  it("GET product by empty id should return 'BadRequest'", async () => {
 
     const event = {} as APIGatewayProxyEvent;
     const response = await getProductByIdHandler(event);

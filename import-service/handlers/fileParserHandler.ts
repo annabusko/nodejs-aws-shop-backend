@@ -1,7 +1,7 @@
 import { BuildErrorResponse } from "../../utility/requestHandlerUtilities";
 import { S3 } from "aws-sdk";
 import { S3Event } from "aws-lambda";
-import csvParser = require("csv-parser");
+import * as csvParser from "csv-parser";
 import {
   CopyObjectCommand,
   DeleteObjectCommand,

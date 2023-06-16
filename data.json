@@ -1,0 +1,156 @@
+{
+    "Products": [
+      {
+        "PutRequest": {
+          "Item": {
+            "id": {
+              "S": "1167ec4b-b10c-48c5-9345-fc73c48a80a0"
+            },
+            "title": {
+              "S": "Book 1"
+            },
+            "description": {
+              "S": "Very interesting book 1"
+            },
+            "price": {
+              "N": "11.11"
+            }
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "id": {
+              "S": "2267ec4b-b10c-48c5-9345-fc73c48a80a0"
+            },
+            "title": {
+              "S": "Book 2"
+            },
+            "description": {
+              "S": "Very interesting book 2"
+            },
+            "price": {
+              "N": "22.22"
+            }
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "id": {
+              "S": "3367ec4b-b10c-48c5-9345-fc73c48a80a0"
+            },
+            "title": {
+              "S": "Book 3"
+            },
+            "description": {
+              "S": "Very interesting book 3"
+            },
+            "price": {
+              "N": "33.33"
+            }
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "id": {
+              "S": "4467ec4b-b10c-48c5-9345-fc73c48a80a0"
+            },
+            "title": {
+              "S": "Book 4"
+            },
+            "description": {
+              "S": "Very interesting book 4"
+            },
+            "price": {
+              "N": "44.44"
+            }
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "id": {
+              "S": "5567ec4b-b10c-48c5-9345-fc73c48a80a0"
+            },
+            "title": {
+              "S": "Book 5"
+            },
+            "description": {
+              "S": "Very interesting book 5"
+            },
+            "price": {
+              "N": "55.55"
+            }
+          }
+        }
+      }
+    ],
+    "Stocks": [
+      {
+        "PutRequest": {
+          "Item": {
+            "product_id": {
+              "S": "1167ec4b-b10c-48c5-9345-fc73c48a80a0"
+            },
+            "count": {
+              "N": "1"
+            }
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "product_id": {
+              "S": "2267ec4b-b10c-48c5-9345-fc73c48a80a0"
+            },
+            "count": {
+              "N": "2"
+            }
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "product_id": {
+              "S": "3367ec4b-b10c-48c5-9345-fc73c48a80a0"
+            },
+            "count": {
+              "N": "3"
+            }
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "product_id": {
+              "S": "4467ec4b-b10c-48c5-9345-fc73c48a80a0"
+            },
+            "count": {
+              "N": "4"
+            }
+          }
+        }
+      },
+      {
+        "PutRequest": {
+          "Item": {
+            "product_id": {
+              "S": "5567ec4b-b10c-48c5-9345-fc73c48a80a0"
+            },
+            "count": {
+              "N": "5"
+            }
+          }
+        }
+      }
+    ]
+  }

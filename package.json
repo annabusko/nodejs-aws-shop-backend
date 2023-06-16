@@ -7,8 +7,9 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "test": "jest",
-    "cdk": "cdk"
+    "test": "jest --silent=false",
+    "cdk": "cdk",
+    "db:write": "aws --region eu-north-1 dynamodb batch-write-item --request-items file://data.json"
   },
   "devDependencies": {
     "@types/jest": "^29.5.1",
@@ -24,6 +25,7 @@
     "@types/aws-lambda": "^8.10.115",
     "aws-cdk-lib": "2.81.0",
     "aws-lambda": "^1.0.7",
+    "aws-sdk": "^2.1395.0",
     "constructs": "^10.2.40",
     "source-map-support": "^0.5.21"
   }

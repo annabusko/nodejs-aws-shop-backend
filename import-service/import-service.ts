@@ -66,8 +66,8 @@ export class ImportService extends Construct {
 
     const handler = new lambda.NodejsFunction(this, "FileParserHandler", {
       runtime: Runtime.NODEJS_18_X,
-      entry: `import-service/handlers/fileParserHandler.ts`,
-      handler: "fileParserHandler",
+      entry: `import-service/handlers/importFileParserHandler.ts`,
+      handler: "importFileParserHandler",
       initialPolicy: [
         new PolicyStatement({
           effect: Effect.ALLOW,

@@ -1,14 +1,14 @@
 import { BuildErrorResponse } from "../../utility/requestHandlerUtilities";
 import { S3 } from "aws-sdk";
 import { S3Event } from "aws-lambda";
-import * as csvParser from "csv-parser";
+import csvParser = require("csv-parser");
 import {
   CopyObjectCommand,
   DeleteObjectCommand,
   S3Client,
 } from "@aws-sdk/client-s3";
 
-export const fileParserHandler = async (event: S3Event) => {
+export const importFileParserHandler = async (event: S3Event) => {
   try {
     console.log("S3 event consummation started");
 

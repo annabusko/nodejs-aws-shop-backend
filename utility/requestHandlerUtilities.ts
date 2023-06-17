@@ -5,21 +5,31 @@ export const HttpStatuses = {
     InternalError: 500
 }
 
+const CorsHeaders = {
+  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "*",
+}
+
+export const BuildHttpRawResponse = (status: number, data?: any) => {
+  return {
+    statusCode: status,
+    headers: CorsHeaders,
+    body: data,
+  };
+};
+
 export const BuildHttpJsonResponse = (status: number, data?: any) => {
   return {
     statusCode: status,
-    headers: {
-      "Access-Control-Allow-Headers": "Content-Type",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "*",
-    },
+    headers: CorsHeaders,
     body: JSON.stringify(data),
   };
 };
 
 export const BuildErrorResponse = (error: any) => {
   console.log(error);
-  return BuildHttpJsonResponse(HttpStatuses.InternalError, `Internal error ${JSON.stringify(error)}`);
+  return BuildHttpJsonResponse(HttpStatuses.InternalError, `Internal error: ${JSON.stringify(error)}`);
 }
 
 export const LogRequest = (event: any) =>{
